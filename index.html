@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Investerarhjälpen: Rätt plattform för ditt sparande</title>
+  <meta name="description" content="Svara på några frågor. Vi jämför banker, nätmäklare och sparkonton och visar var just du får mest kvar. Vi rör aldrig dina pengar.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body id="top">
+  <a class="skip-link" href="#innehall">Hoppa till innehållet</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="#top">Investerarhjälpen</a>
+      <nav aria-label="Huvudmeny">
+        <ul class="nav-list">
+          <li><a href="#sa-fungerar-det">Så fungerar det</a></li>
+          <li><a href="#om-oss">Om oss</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="innehall">
+
+    <!-- 1. Hero -->
+    <section class="section hero" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero-text">
+          <h1 id="hero-title">Rätt plattform för <span class="scribble">ditt sparande.</span></h1>
+          <p class="lead">Svara på några frågor. Vi jämför banker, nätmäklare och sparkonton och visar var just du får mest kvar.</p>
+          <a class="button hero-button" href="fragor/index.html">Hitta mitt upplägg</a>
+          <p class="small-print">Vi rör aldrig dina pengar.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Example result -->
+    <section class="section section-tinted" id="exempel" aria-labelledby="example-title">
+      <div class="container">
+        <div class="label-row">
+          <h2 id="example-title">Exempel: Så kan ditt upplägg se ut</h2>
+          <span class="tag">Exempeldata</span>
+        </div>
+
+        <ul class="setup-list" id="setup-list"></ul>
+
+        <p class="big-figure">Du får ca <span class="is-positive" id="example-gain">–</span> mer per år.</p>
+        <p class="small-print">Det bästa är ofta inte en plattform, utan flera.</p>
+      </div>
+    </section>
+
+    <!-- 3. How it works -->
+    <section class="section" id="sa-fungerar-det" aria-labelledby="how-title">
+      <div class="container">
+        <h2 id="how-title">Så fungerar det</h2>
+        <ol class="steps">
+          <li class="step">
+            <h3>Svara på frågorna</h3>
+            <p>Hur du vill spara, hur aktiv du vill vara, hur länge.</p>
+          </li>
+          <li class="step">
+            <h3>Se ditt upplägg</h3>
+            <p>Vilka institut som passar dig och vad du vinner på att byta.</p>
+          </li>
+          <li class="step">
+            <h3>Byt själv</h3>
+            <p>Vi visar steg för steg hur du flyttar. Vi rör aldrig dina pengar.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 4. Calculator -->
+    <section class="section section-tinted" aria-labelledby="calc-title">
+      <div class="container">
+        <h2 id="calc-title">Vad kostar ditt sparande idag?</h2>
+        <p class="section-intro">Avgifter, courtage och ränta avgör hur mycket du har kvar. Se vad det blir i kronor.</p>
+
+        <div class="calc-grid">
+          <form class="calc-form" id="calc-form" novalidate>
+            <div class="field">
+              <label for="calc-amount">Belopp (kr)</label>
+              <input type="text" id="calc-amount" inputmode="numeric" autocomplete="off">
+            </div>
+            <div class="field">
+              <label for="calc-years">Antal år</label>
+              <input type="text" id="calc-years" inputmode="numeric" autocomplete="off" value="20">
+            </div>
+            <div class="field">
+              <label for="calc-fee">Nuvarande kostnad per år (%)</label>
+              <input type="text" id="calc-fee" inputmode="decimal" autocomplete="off" aria-describedby="calc-fee-hint">
+              <p class="field-hint" id="calc-fee-hint">FI:s medianavgift för aktivt förvaltade fonder.</p>
+            </div>
+          </form>
+
+          <div class="calc-result" aria-live="polite">
+            <dl class="result-list">
+              <div class="result">
+                <dt>Ditt nuvarande institut</dt>
+                <dd id="calc-current">–</dd>
+                <p class="result-note">Så mycket har du om du stannar kvar.</p>
+              </div>
+              <div class="result">
+                <dt>Ditt bästa upplägg (<span id="calc-example-fee">–</span> per år)</dt>
+                <dd id="calc-example">–</dd>
+                <p class="result-note" id="calc-best-setup"></p>
+              </div>
+              <div class="result result-total">
+                <dt>Skillnad</dt>
+                <dd id="calc-diff">–</dd>
+              </div>
+            </dl>
+            <p class="calc-message" id="calc-message"></p>
+          </div>
+        </div>
+
+        <figure class="calc-chart" id="calc-chart-figure" hidden>
+          <figcaption class="chart-title">Så växer pengarna</figcaption>
+          <ul class="chart-legend">
+            <li><span class="swatch swatch-current"></span><span>Med ditt nuvarande institut (<span id="legend-current-fee">–</span>)</span></li>
+            <li><span class="swatch swatch-example"></span><span>Med ditt bästa upplägg (<span id="legend-example-fee">–</span>)</span></li>
+            <li><span class="swatch swatch-gap"></span><span>Skillnaden</span></li>
+          </ul>
+          <div class="chart" id="calc-chart"></div>
+          <ol class="milestones" id="calc-milestones"></ol>
+        </figure>
+
+        <p class="note">Exempelberäkning, inte en prognos. Vi räknar med <span id="calc-return">–</span> avkastning per år före kostnader. Verklig avkastning varierar och kan bli lägre.</p>
+      </div>
+    </section>
+
+    <!-- 5. Trust -->
+    <section class="section section-trust" aria-label="Därför kan du lita på oss">
+      <div class="container">
+        <ul class="trust-list">
+          <li>
+            <a href="https://fi.se/sv/vara-register/">Tillstånd från Finansinspektionen</a>
+            <span class="tag">Platshållare</span>
+          </li>
+          <li>Helt gratis. Vi tar inte betalt av något institut.</li>
+          <li>Vi jämför alla och rekommenderar det som passar dig, inget annat.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 6. About us -->
+    <section class="section" id="om-oss" aria-labelledby="team-title">
+      <div class="container">
+        <h2 id="team-title">Om oss</h2>
+        <ul class="team-list">
+          <li class="team-member">
+            <img src="img/grundare-1.svg" alt="Foto på Vidar Ericsson (platshållare)" width="240" height="240">
+            <h3>Vidar Ericsson</h3>
+            <p>Handelshögskolan i Stockholm.</p>
+          </li>
+          <li class="team-member">
+            <img src="img/grundare-2.svg" alt="Foto på Nils Lye (platshållare)" width="240" height="240">
+            <h3>Nils Lye</h3>
+            <p>Handelshögskolan i Stockholm.</p>
+          </li>
+          <li class="team-member">
+            <img src="img/grundare-3.svg" alt="Foto på Kristian Traaholt (platshållare)" width="240" height="240">
+            <h3>Kristian Traaholt</h3>
+            <p>Handelshögskolan i Stockholm och KTH.</p>
+          </li>
+          <li class="team-member">
+            <img src="img/grundare-4.svg" alt="Foto på Jesper Ljungberg (platshållare)" width="240" height="240">
+            <h3>Jesper Ljungberg</h3>
+            <p>London School of Economics.</p>
+          </li>
+        </ul>
+        <p class="note">Fotona är platshållare.</p>
+
+        <div class="founder-note">
+          <p>Vi är fyra grundare som bygger Investerarhjälpen. Vi tar inte betalt av något institut och vi rör aldrig dina pengar.</p>
+          <ul class="signatures">
+            <li><img src="img/signatur-1.svg" alt="Platshållare för Vidar Ericssons signatur" width="160" height="56"></li>
+            <li><img src="img/signatur-2.svg" alt="Platshållare för Nils Lyes signatur" width="160" height="56"></li>
+            <li><img src="img/signatur-3.svg" alt="Platshållare för Kristian Traaholts signatur" width="160" height="56"></li>
+            <li><img src="img/signatur-4.svg" alt="Platshållare för Jesper Ljungbergs signatur" width="160" height="56"></li>
+          </ul>
+          <p class="note">Texten och signaturerna är platshållare.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <dl class="contact-list">
+        <div>
+          <dt>Organisationsnummer</dt>
+          <dd>000000-0000</dd>
+        </div>
+        <div>
+          <dt>Adress</dt>
+          <dd>Exempelgatan 1, 111 11 Stockholm</dd>
+        </div>
+      </dl>
+      <ul class="footer-links">
+        <li><a href="#" data-placeholder>Integritetspolicy</a></li>
+        <li><a href="#" data-placeholder>Cookies</a></li>
+        <li><a href="#" data-placeholder>Läs vår metod</a></li>
+      </ul>
+      <p class="note">Organisationsnummer och adress är exempeluppgifter. Länkarna är platshållare.</p>
+      <p class="disclaimer">Exemplen på sidan är generella och utgör inte personlig rådgivning.</p>
+    </div>
+  </footer>
+</body>
+</html>

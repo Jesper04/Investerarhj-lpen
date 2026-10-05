@@ -1,0 +1,460 @@
+/* ==========================================================================
+   Design tokens – change colours and font sizes here
+   ========================================================================== */
+:root {
+  /* Colours */
+  --color-bg: #F6F8FB;                /* very light cool grey, not pure white */
+  --color-text: #1B2A41;
+  --color-text-muted: #55596A;      /* lighter tone of the text colour */
+  --color-accent: #4A6FA5;          /* muted blue, clickable elements only */
+  --color-accent-hover: #3A5C8F;
+  --color-section: #E9EEF5;         /* tinted section background */
+  --color-border: #DCE2EA;
+  --color-border-strong: #7B8496;
+
+  /* Font sizes */
+  --fs-small: 0.875rem;
+  --fs-body: 1.0625rem;
+  --fs-lead: 1.1875rem;
+  --fs-h2: 1.1875rem;
+  --fs-h1: clamp(1.5rem, 1.25rem + 1.2vw, 2rem);
+  --fs-figure: clamp(1.25rem, 1.1rem + 0.8vw, 1.5rem);
+
+  /* Font */
+  --font: "Lexend", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Layout */
+  --container: 36rem;
+  --gutter: 1.25rem;
+  --radius: 0.1875rem;
+}
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font);
+  font-size: var(--fs-body);
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1,
+h2,
+p,
+ul,
+dl,
+dd {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2 {
+  font-weight: 700;
+  line-height: 1.25;
+  text-wrap: balance;
+}
+
+h1 {
+  font-size: var(--fs-h1);
+  letter-spacing: -0.01em;
+}
+
+h1:focus {
+  outline: none;
+}
+
+h2 {
+  margin-top: 2rem;
+  font-size: var(--fs-h2);
+}
+
+h2 + p {
+  margin-top: 0.5rem;
+}
+
+h2 + p + p {
+  margin-top: 0.75rem;
+}
+
+a {
+  color: var(--color-accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+/* ==========================================================================
+   Header
+   ========================================================================== */
+.site-header {
+  padding-block: 0.875rem;
+  border-bottom: 3px double var(--color-text);
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.logo:hover {
+  color: var(--color-text);
+}
+
+/* ==========================================================================
+   Screens
+   ========================================================================== */
+.screen {
+  padding-block: 1.5rem 3rem;
+  animation: fade-in 150ms ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .screen {
+    animation: none;
+  }
+}
+
+.lead {
+  margin-top: 1rem;
+  font-size: var(--fs-lead);
+}
+
+.small-print {
+  margin-top: 1rem;
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.tag {
+  display: inline-block;
+  font-size: var(--fs-small);
+  font-style: italic;
+  color: var(--color-text-muted);
+  white-space: nowrap;
+}
+
+.button {
+  display: inline-block;
+  min-height: 3rem;
+  margin-top: 1.75rem;
+  padding: 0.75rem 1.75rem;
+  background: var(--color-accent);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius);
+  color: #FFFFFF;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 120ms, border-color 120ms;
+}
+
+.button:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+}
+
+.button:disabled {
+  background: var(--color-section);
+  border-color: var(--color-border);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.button-secondary {
+  margin-top: 0;
+  background: var(--color-bg);
+  color: var(--color-accent);
+}
+
+.button-secondary:hover {
+  background: var(--color-bg);
+  color: var(--color-accent-hover);
+}
+
+/* ==========================================================================
+   Question screen
+   ========================================================================== */
+.question-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.back {
+  min-height: 2.75rem;
+  margin-left: -0.5rem;
+  padding: 0.25rem 0.5rem;
+  background: none;
+  border: 0;
+  color: var(--color-accent);
+  font: inherit;
+  cursor: pointer;
+}
+
+.back:hover {
+  color: var(--color-accent-hover);
+  text-decoration: underline;
+}
+
+.progress-text {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.progress-bar {
+  height: 0.25rem;
+  background: var(--color-section);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.progress-bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-text);
+}
+
+.question-title {
+  margin-top: 1.5rem;
+}
+
+.option-group {
+  margin-top: 1.25rem;
+}
+
+.group-label {
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.options {
+  display: grid;
+  gap: 0.625rem;
+}
+
+.options-two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.option {
+  min-height: 3.25rem;
+  padding: 0.625rem 1rem;
+  background: var(--color-bg);
+  border: 2px solid var(--color-accent);
+  border-radius: var(--radius);
+  color: var(--color-accent);
+  font: inherit;
+  font-weight: 700;
+  line-height: 1.3;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 120ms, color 120ms;
+}
+
+.options-two .option {
+  min-height: 3rem;
+  padding-inline: 0.75rem;
+  text-align: center;
+}
+
+.option:hover {
+  border-color: var(--color-accent-hover);
+  color: var(--color-accent-hover);
+}
+
+.option[aria-pressed="true"] {
+  background: var(--color-accent);
+  color: #FFFFFF;
+}
+
+/* ==========================================================================
+   Result screen
+   ========================================================================== */
+.result-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.75rem;
+}
+
+.result-summary {
+  margin-top: 0.25rem;
+  color: var(--color-text-muted);
+}
+
+.card {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--color-section);
+  border-radius: var(--radius);
+}
+
+.split-text {
+  font-size: var(--fs-figure);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.split-bar {
+  height: 0.75rem;
+  margin-top: 0.875rem;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-strong);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.split-bar span {
+  display: block;
+  height: 100%;
+  background: var(--color-text);
+}
+
+.fund-list {
+  margin-top: 1.25rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.fund-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 0.625rem;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.fund-weight {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.spec-list {
+  display: grid;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.spec {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.spec dt {
+  font-size: var(--fs-small);
+  color: var(--color-text-muted);
+}
+
+.spec dd {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.card .small-print {
+  margin-top: 0.75rem;
+}
+
+.result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem 1.5rem;
+  margin-top: 2rem;
+}
+
+/* ==========================================================================
+   Wider screens
+   ========================================================================== */
+@media (min-width: 40rem) {
+  .screen {
+    padding-block: 3rem 5rem;
+  }
+
+  .card {
+    padding: 2rem;
+  }
+}
+
+/* Timeline on the result screen */
+.timeline {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.timeline-label {
+  flex: none;
+  font-size: var(--fs-small);
+  font-weight: 700;
+}
+
+.timeline-line {
+  position: relative;
+  flex: 1;
+  height: 2px;
+  background: var(--color-text);
+}
+
+.timeline-line::before,
+.timeline-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 0.625rem;
+  height: 0.625rem;
+  background: var(--color-text);
+  border-radius: 50%;
+  transform: translateY(-50%);
+}
+
+.timeline-line::before {
+  left: 0;
+}
+
+.timeline-line::after {
+  right: 0;
+}
