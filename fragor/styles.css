@@ -329,6 +329,10 @@ a:hover {
   border-radius: var(--radius);
 }
 
+.card h2:first-child {
+  margin-top: 0;
+}
+
 .split-text {
   font-size: var(--fs-figure);
   font-weight: 700;
